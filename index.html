@@ -21,7 +21,32 @@
 </head>
 
 <body>
+<!-- BOTÓN PARA ABRIR EL MENÚ -->
+<button id="btnMenu" class="btn-menu" aria-label="Abrir menú de obras">
+  ☰ Obras
+</button>
 
+<!-- PANEL LATERAL -->
+<aside id="panelObras" class="panel-obras">
+  <button id="btnCerrarPanel" class="btn-cerrar" aria-label="Cerrar menú">✕</button>
+
+  <h3>Nuestras obras</h3>
+
+  <ul class="lista-obras">
+    <li><button class="filtro-obra" data-filtro="todas">Ver todas</button></li>
+    <li><button class="filtro-obra" data-filtro="cazadoras-doradas">Cazadoras Doradas</button></li>
+    <li><button class="filtro-obra" data-filtro="superheroes-enredados">Superhéroes Enredados</button></li>
+    <li><button class="filtro-obra" data-filtro="viaje-jurasico">Viaje Jurásico</button></li>
+    <li><button class="filtro-obra" data-filtro="brainrots">Brainrots</button></li>
+    <li><button class="filtro-obra" data-filtro="supercachorros">Supercachorros</button></li>
+    <li><button class="filtro-obra" data-filtro="princesas-del-hielo">Princesas del Hielo</button></li>
+    <li><button class="filtro-obra" data-filtro="circo-en-la-vida-digital">Circo en la vida digital</button></li>
+    <li><button class="filtro-obra" data-filtro="jugueteria-congelada">Juguetería Congelada</button></li>
+  </ul>
+</aside>
+
+<!-- FONDO OSCURO QUE APARECE DETRÁS DEL PANEL -->
+<div id="overlay" class="overlay"></div>
   <header class="header">
     <img src="LOGO.PNG.png" alt="Logo Arpegio Musicales" class="logo">
     <h1>Arpegio Musicales</h1>
@@ -35,7 +60,7 @@
 
         
 <!-- CAZADORAS DORADAS GIRA ARGENTINA -->
-<article class="card-obra">
+<article class="card-obra" data-obra="cazadoras-doradas">
   <img src="CAZADORAS.jpeg" alt="Cazadoras Doradas" loading="lazy">
 
   <div class="card-obra-content">
@@ -90,7 +115,7 @@
   </div>
 </article>
  <!-- CAZADORAS DORADAS - VILLA CARLOS PAZ -->
-<article class="card-obra">
+<article class="card-obra" data-obra="cazadoras-doradas">
   <img src="CAZADORAS.jpeg" alt="Cazadoras Doradas" loading="lazy">
 
   <div class="card-obra-content">
@@ -149,7 +174,7 @@
   </div>
 </article>
  <!-- CAZADORAS DORADAS - MAR DEL PLATA -->
-        <article class="card-obra">
+        <article class="card-obra" data-obra="cazadoras-doradas">
           <img src="CAZADORAS.jpeg" alt="Cazadoras Doradas" loading="lazy">
 
           <div class="card-obra-content">
@@ -181,7 +206,7 @@
         </article>
 
         <!-- SUPERHÉROES ENREDADOS - MAR DEL PLATA -->
-<article class="card-obra">
+<article class="card-obra" data-obra="superheroes-enredados">
   <img src="SUPER.jpeg" alt="Superhéroes Enredados" loading="lazy">
 
   <div class="card-obra-content">
@@ -205,7 +230,7 @@
 </article>
         
 <!-- VIAJE JURÁSICO -->
-<article class="card-obra">
+<article class="card-obra" data-obra="viaje-jurasico">
   <img src="VIAJE.jpeg" alt="Viaje Jurásico" loading="lazy">
 
   <div class="card-obra-content">
@@ -240,7 +265,7 @@
   </div>
 </article>
 <!-- VIAJE JURÁSICO - VILLA CARLOS PAZ -->
-<article class="card-obra">
+<article class="card-obra" data-obra="viaje-jurasico">
   <img src="VIAJE.jpeg" alt="Viaje Jurásico" loading="lazy">
 
   <div class="card-obra-content">
@@ -287,7 +312,7 @@
   </div>
 </article>
 <!-- VIAJE JURÁSICO -->
-<article class="card-obra">
+<article class="card-obra" data-obra="viaje-jurasico">
   <img src="VIAJE.jpeg" alt="Viaje Jurásico" loading="lazy">
 
   <div class="card-obra-content">
@@ -350,7 +375,7 @@
   </div>
 </article>
 <!-- BRAINROTS -->
-<article class="card-obra">
+<article class="card-obra" data-obra="brainrots">
   <img src="BRAINROTS.jpeg" alt="Brainrots" loading="lazy">
 
   <div class="card-obra-content">
@@ -389,7 +414,7 @@
   </div>
 </article>
 <!-- SUPERCACHORROS -->
-<article class="card-obra">
+<article class="card-obra" data-obra="supercachorros">
   <img src="CACHORROS.jpeg" alt="Supercachorros - El Poder de la Imaginación" loading="lazy">
 
   <div class="card-obra-content">
@@ -428,7 +453,7 @@
   </div>
 </article>
 <!-- PRINCESAS DEL HIELO -->
-<article class="card-obra">
+<article class="card-obra" data-obra="princesas-del-hielo">
   <img src="FROZEN.jpeg" alt="Princesas del Hielo" loading="lazy">
 
   <div class="card-obra-content">
@@ -467,7 +492,7 @@
   </div>
 </article>
 <!-- CIRCO EN LA VIDA DIGITAL -->
-<article class="card-obra">
+<article class="card-obra" data-obra="circo-en-la-vida-digital">
   <img src="CIRCO-DIGITAL-PASEO.jpeg" alt="Circo en la vida digital" loading="lazy">
 
   <div class="card-obra-content">
@@ -494,7 +519,7 @@
   </div>
 </article>
 <!-- JUGUETERIA CONGELADA -->
-<article class="card-obra">
+<article class="card-obra" data-obra="jugueteria-congelada">
   <img src="JUGUETERIA-PASEO.jpeg" alt="Juguetería Congelada" loading="lazy">
 
   <div class="card-obra-content">

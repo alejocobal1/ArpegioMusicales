@@ -1,42 +1,179 @@
-
-// Espera a que el DOM esté listo (buena práctica)
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Busco todas las cards de obras
+  /* ==========================================
+     ELEMENTOS
+  ========================================== */
+
   const cards = document.querySelectorAll(".card-obra");
 
-  cards.forEach((card) => {
+  const btnMenu = document.getElementById("btnMenu");
+  const panel = document.getElementById("panelObras");
+  const btnCerrar = document.getElementById("btnCerrarPanel");
+  const overlay = document.getElementById("overlay");
+  const botonesFiltro = document.querySelectorAll(".filtro-obra");
 
-    // Elementos dentro de cada card
-    const selectFuncion = card.querySelector(".funcion");
-    const btn = card.querySelector(".btn-comprar");
 
-    // Si no existen, no hace nada (evita errores)
-    if (!selectFuncion || !btn) return;
 
-    // Función que actualiza el botón según la selección
-    const actualizarBoton = () => {
+  /* ==========================================
+     BOTONES COMPRAR
+  ========================================== */
 
-      const opcionSeleccionada = selectFuncion.selectedOptions[0];
+  function initCompra() {
 
-      // Si hay opción válida y tiene URL
-      const url = opcionSeleccionada?.dataset?.url;
+    cards.forEach(card => {
 
-      if (selectFuncion.value && url) {
-        btn.href = url;
-        btn.classList.remove("disabled");
-      } else {
-        btn.href = "#";
-        btn.classList.add("disabled");
+      const select = card.querySelector(".funcion");
+      const boton = card.querySelector(".btn-comprar");
+
+      if (!select || !boton) return;
+
+      function actualizarBoton() {
+
+        const opcion = select.selectedOptions[0];
+
+        if (!opcion) return;
+
+        const url = opcion.dataset.url;
+
+        if (url && url !== "#") {
+
+          boton.href = url;
+          boton.classList.remove("disabled");
+
+        } else {
+
+          boton.href = "#";
+          boton.classList.add("disabled");
+
+        }
+
       }
-    };
 
-    // Escucha cambios del selector
-    selectFuncion.addEventListener("change", actualizarBoton);
+      select.addEventListener("change", actualizarBoton);
 
-    // Estado inicial (por si hay valores precargados)
-    actualizarBoton();
+      actualizarBoton();
 
+    });
+
+  }
+
+
+
+  /* ==========================================
+     MENÚ LATERAL
+  ========================================== */
+
+  function abrirPanel() {
+
+    panel.classList.add("abierto");
+    overlay.classList.add("visible");
+
+  }
+
+  function cerrarPanel() {
+
+    panel.classList.remove("abierto");
+    overlay.classList.remove("visible");
+
+  }
+
+  function initMenu() {
+
+    if (btnMenu)
+      btnMenu.addEventListener("click", abrirPanel);
+
+    if (btnCerrar)
+      btnCerrar.addEventListener("click", cerrarPanel);
+
+    if (overlay)
+      overlay.addEventListener("click", cerrarPanel);
+
+  }
+
+
+
+  /* ==========================================
+     FILTROS
+  ========================================== */
+
+  function initFiltros() {
+
+    botonesFiltro.forEach(boton => {
+
+      boton.addEventListener("click", () => {
+
+        const filtro = boton.dataset.filtro;
+
+        cards.forEach(card => {
+
+          if (filtro === "todas" || card.dataset.obra === filtro) {
+
+            card.classList.remove("oculta");
+
+          } else {
+
+            card.classList.add("oculta");
+
+          }
+
+        });
+
+        botonesFiltro.forEach(b => b.classList.remove("activo"));
+        boton.classList.add("activo");
+
+        cerrarPanel();
+
+        document.querySelector(".obras")
+          .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+      });
+
+    });
+
+    const btnTodas = document.querySelector('[data-filtro="todas"]');
+
+    if (btnTodas) {
+      btnTodas.classList.add("activo");
+    }
+
+  }
+
+
+
+  /* ==========================================
+     ANIMACIÓN AL HACER SCROLL
+  ========================================== */
+
+  const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+
+      }
+
+    });
+
+  }, {
+    threshold: 0.15
   });
+
+  cards.forEach(card => observer.observe(card));
+
+
+
+  /* ==========================================
+     INICIAR TODO
+  ========================================== */
+
+  initCompra();
+  initMenu();
+  initFiltros();
 
 });
