@@ -296,8 +296,8 @@ body {
 
 .btn-menu {
   position: fixed;
-  top: 20px;
-  left: 20px;
+  top: 70px;
+  left: 10px;
   z-index: 1000;
 
   background: var(--dorado);
@@ -524,5 +524,14 @@ body {
   .filtro-obra {
     font-size: 15px;
     padding: 12px;
+  }
+}/* ==========================================
+   AJUSTE BOTÓN MENÚ EN CELULAR
+========================================== */
+
+@media (max-width: 768px) {
+  .btn-menu {
+    top: 80px;
+    left: 15px;
   }
 }
