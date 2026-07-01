@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Administración - Arpegio Musicales</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#111;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.login{
+    background:#1f1f1f;
+    padding:35px;
+    border-radius:15px;
+    width:350px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    margin-bottom:20px;
+    border:none;
+    border-radius:8px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:gold;
+    color:black;
+    border:none;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login">
+
+<h2>Panel de administración</h2>
+
+<input type="password" id="password" placeholder="Contraseña">
+
+<button onclick="login()">
+Ingresar
+</button>
+
+</div>
+
+<script>
+
+function login(){
+
+const pass=document.getElementById("password").value;
+
+if(pass==="arpegio2026"){
+
+window.location.href="panel.html";
+
+}else{
+
+alert("Contraseña incorrecta");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
